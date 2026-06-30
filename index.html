@@ -9,16 +9,23 @@
   </head>
 <body class="bg-[#1e1e1e] text-[#d4d4d4] font-mono h-screen flex flex-col overflow-hidden">
 
-  <!-- Top Bar (Title Bar) -->
-  <div class="h-8 bg-[#3c3c3c] flex items-center px-3 text-sm text-gray-300 select-none">
-    Hossein Shafiei - Portfolio
-  </div>
+<!-- Top Bar (Title Bar) -->
+<div class="h-8 bg-[#3c3c3c] flex items-center px-3 text-sm text-gray-300 select-none shrink-0 gap-3">
+  <button id="sidebar-toggle" class="md:hidden text-gray-300 hover:text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+  </button>
+  Hossein Shafiei - Portfolio
+</div>
+
+<div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
 
   <!-- Main Container -->
   <div class="flex flex-1 overflow-hidden">
 
     <!-- Activity Bar -->
-    <div class="w-12 bg-[#333333] flex flex-col items-center py-2 gap-4">
+    <div class="w-12 bg-[#333333] hidden md:flex flex-col items-center py-2 gap-4">
       <!-- Explorer Icon (Active) -->
       <button class="w-10 h-10 flex items-center justify-center text-white border-l-2 border-white hover:bg-[#2a2d2e] rounded-sm">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
@@ -49,7 +56,7 @@
     </div>
 
     <!-- Sidebar -->
-    <div class="w-60 bg-[#252526] border-r border-[#1e1e1e] overflow-y-auto">
+   <div id="sidebar" class="fixed md:relative z-50 top-0 left-0 h-full w-60 bg-[#252526] border-r border-[#1e1e1e] overflow-y-auto transform -translate-x-full md:translate-x-0 transition-transform duration-200">
       <div class="px-3 py-2 text-xs text-gray-400 uppercase tracking-wide">
         Explorer
       </div>
@@ -420,7 +427,7 @@
 
     <div class="flex items-center gap-4">
       <span>UTF-8</span>
-      <span>JSX</span>
+      <span id="status-language">JSX</span>
       <span>Ln 1, Col 1</span>
     </div>
   </div>

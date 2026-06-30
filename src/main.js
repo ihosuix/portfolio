@@ -9,6 +9,16 @@ const filesMeta = {
   readme:     { label: 'README.md',      icon: '<span class="text-gray-400 font-bold text-xs">M↓</span>' },
 };
 
+const fileLang = {
+  home:       'JSX',
+  about:      'HTML',
+  projects:   'JavaScript',
+  skills:     'JSON',
+  experience: 'TypeScript',
+  contact:    'CSS',
+  readme:     'Markdown',
+};
+
 let openTabs = ['home'];
 let activeFile = 'home';
 
@@ -24,6 +34,9 @@ function showFile(fileName) {
   activeFile = fileName;
   renderTabs();
   highlightSidebar(fileName);
+
+    document.getElementById('status-language').textContent = fileLang[fileName] || '';
+
 }
 
 // ── رندر تب‌ها ───────────────────────────────────────────
@@ -170,3 +183,28 @@ terminalInput.addEventListener('keydown', (e) => {
 
 // ── init ─────────────────────────────────────────────────
 showFile('home');
+
+// ── موبایل Sidebar Toggle ─────────────────────────────────
+const sidebar        = document.getElementById('sidebar');
+const sidebarToggle  = document.getElementById('sidebar-toggle');
+const sidebarOverlay = document.getElementById('sidebar-overlay');
+
+function openSidebar() {
+  sidebar.classList.remove('-translate-x-full');
+  sidebarOverlay.classList.remove('hidden');
+}
+
+function closeSidebar() {
+  sidebar.classList.add('-translate-x-full');
+  sidebarOverlay.classList.add('hidden');
+}
+
+sidebarToggle.addEventListener('click', openSidebar);
+sidebarOverlay.addEventListener('click', closeSidebar);
+
+// بستن Sidebar بعد از انتخاب فایل روی موبایل
+document.querySelectorAll('[data-file]').forEach(item => {
+  item.addEventListener('click', () => {
+    if (window.innerWidth < 768) closeSidebar();
+  });
+});
