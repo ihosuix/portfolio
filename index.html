@@ -1,0 +1,1416 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>ihosuix</title>
+    <script type="module" crossorigin src="/portfolio/assets/index-wQCZJvaj.js"></script>
+    <link rel="stylesheet" crossorigin href="/portfolio/assets/index-6vBhTFAH.css">
+  </head>
+  <body
+    class="bg-[#1e1e1e] text-[#d4d4d4] font-mono h-screen flex flex-col overflow-hidden"
+  >
+    <!-- Top Bar (Title Bar) -->
+    <div
+      class="h-8 bg-[#3c3c3c] flex items-center px-3 text-sm text-gray-300 select-none shrink-0 gap-3"
+    >
+      <button
+        id="sidebar-toggle"
+        class="md:hidden text-gray-300 hover:text-white"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-4 h-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+      Hossein Shafiei - Portfolio
+    </div>
+
+    <div
+      id="sidebar-overlay"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"
+    ></div>
+
+    <!-- Menu Bar -->
+    <div
+      class="h-7 bg-[#3c3c3c] flex items-center px-2 text-xs text-gray-400 select-none border-b border-[#2a2a2a] shrink-0"
+    >
+      <div class="relative group">
+        <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">
+          File
+        </button>
+        <div
+          class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1"
+        >
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>New File</span><span class="text-gray-600">Ctrl+N</span>
+          </div>
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Open File</span><span class="text-gray-600">Ctrl+O</span>
+          </div>
+          <div class="border-t border-[#3c3c3c] my-1"></div>
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Save</span><span class="text-gray-600">Ctrl+S</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">
+          Edit
+        </button>
+        <div
+          class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1"
+        >
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Undo</span><span class="text-gray-600">Ctrl+Z</span>
+          </div>
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Redo</span><span class="text-gray-600">Ctrl+Y</span>
+          </div>
+          <div class="border-t border-[#3c3c3c] my-1"></div>
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Find</span><span class="text-gray-600">Ctrl+F</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">
+          View
+        </button>
+        <div
+          class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1"
+        >
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Explorer</span><span class="text-gray-600">Ctrl+Shift+E</span>
+          </div>
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Terminal</span><span class="text-gray-600">Ctrl+`</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">
+          Go
+        </button>
+        <div
+          class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1"
+        >
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Go to File</span><span class="text-gray-600">Ctrl+P</span>
+          </div>
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>Go to Line</span><span class="text-gray-600">Ctrl+G</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">
+          Terminal
+        </button>
+        <div
+          class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1"
+        >
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>New Terminal</span
+            ><span class="text-gray-600">Ctrl+Shift+`</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative group">
+        <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">
+          Help
+        </button>
+        <div
+          class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1"
+        >
+          <div
+            class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"
+          >
+            <span>About</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="flex flex-1 overflow-hidden">
+      <!-- Activity Bar -->
+      <div
+        class="w-12 bg-[#333333] hidden md:flex flex-col items-center py-2 gap-4"
+      >
+        <!-- Explorer Icon (Active) -->
+        <button
+          class="w-10 h-10 flex items-center justify-center text-white border-l-2 border-white hover:bg-[#2a2d2e] rounded-sm"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V7z"
+            />
+          </svg>
+        </button>
+
+        <!-- Search Icon -->
+        <button
+          class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#2a2d2e] rounded-sm"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z"
+            />
+          </svg>
+        </button>
+
+        <!-- Source Control Icon -->
+        <button
+          class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#2a2d2e] rounded-sm"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 3v12M6 15a3 3 0 106 0 3 3 0 00-6 0zM18 9a3 3 0 10-6 0 3 3 0 006 0zM18 9v3a6 6 0 01-6 6"
+            />
+          </svg>
+        </button>
+
+        <!-- Extensions Icon -->
+        <button
+          class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#2a2d2e] rounded-sm"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-6 h-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Sidebar -->
+      <div
+        id="sidebar"
+        class="fixed md:relative z-50 top-0 left-0 h-full w-60 bg-[#252526] border-r border-[#1e1e1e] overflow-y-auto transform -translate-x-full md:translate-x-0 transition-transform duration-200"
+      >
+        <div class="px-3 py-2 text-xs text-gray-400 uppercase tracking-wide">
+          Explorer
+        </div>
+        <div
+          class="px-2 py-1 text-sm text-gray-300 font-semibold flex items-center gap-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-3 h-3"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+            />
+          </svg>
+          PORTFOLIO
+        </div>
+
+        <ul class="text-sm">
+          <!-- home.jsx -->
+          <li
+            data-file="home"
+            class="flex items-center gap-2 px-6 py-1 cursor-pointer hover:bg-[#2a2d2e] bg-[#37373d]"
+          >
+            <span class="text-blue-400 font-bold text-xs">⚛</span>
+            <span>home.jsx</span>
+          </li>
+
+          <!-- about.html -->
+          <li
+            data-file="about"
+            class="flex items-center gap-2 px-6 py-1 cursor-pointer hover:bg-[#2a2d2e]"
+          >
+            <span class="text-orange-400 font-bold text-xs">&lt;/&gt;</span>
+            <span>about.html</span>
+          </li>
+
+          <!-- projects.js -->
+          <li
+            data-file="projects"
+            class="flex items-center gap-2 px-6 py-1 cursor-pointer hover:bg-[#2a2d2e]"
+          >
+            <span class="text-yellow-400 font-bold text-xs">JS</span>
+            <span>projects.js</span>
+          </li>
+
+          <!-- skills.json -->
+          <li
+            data-file="skills"
+            class="flex items-center gap-2 px-6 py-1 cursor-pointer hover:bg-[#2a2d2e]"
+          >
+            <span class="text-yellow-300 font-bold text-xs">{ }</span>
+            <span>skills.json</span>
+          </li>
+
+          <!-- experience.ts -->
+          <li
+            data-file="experience"
+            class="flex items-center gap-2 px-6 py-1 cursor-pointer hover:bg-[#2a2d2e]"
+          >
+            <span class="text-blue-500 font-bold text-xs">TS</span>
+            <span>experience.ts</span>
+          </li>
+
+          <!-- contact.css -->
+          <li
+            data-file="contact"
+            class="flex items-center gap-2 px-6 py-1 cursor-pointer hover:bg-[#2a2d2e]"
+          >
+            <span class="text-sky-400 font-bold text-xs">#</span>
+            <span>contact.css</span>
+          </li>
+
+          <!-- README.md -->
+          <li
+            data-file="readme"
+            class="flex items-center gap-2 px-6 py-1 cursor-pointer hover:bg-[#2a2d2e]"
+          >
+            <span class="text-gray-400 font-bold text-xs">M↓</span>
+            <span>README.md</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Editor + Terminal Container -->
+      <div class="flex flex-col flex-1 overflow-hidden">
+        <!-- Tabs -->
+        <div
+          class="h-9 bg-[#252526] flex items-center text-sm border-b border-[#1e1e1e] shrink-0 overflow-x-auto scrollbar-none"
+        >
+          <div
+            data-tab="home"
+            class="flex items-center gap-2 px-4 h-full bg-[#1e1e1e] border-r border-[#1e1e1e] text-white cursor-pointer"
+          >
+            <span class="text-blue-400 font-bold text-xs">⚛</span>
+            <span>home.jsx</span>
+            <button class="ml-2 text-gray-500 hover:text-white text-xs">
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div
+          id="breadcrumb"
+          class="h-6 bg-[#1e1e1e] border-b border-[#252526] flex items-center px-3 text-xs text-gray-500 gap-1 shrink-0"
+        >
+          <span class="hover:text-gray-300 cursor-pointer">portfolio</span>
+          <span class="text-gray-600">›</span>
+          <span id="breadcrumb-file" class="text-gray-300">home.jsx</span>
+        </div>
+
+        <!-- Editor Area -->
+        <div class="flex-1 overflow-y-auto p-4 bg-[#1e1e1e]">
+          <!-- home.jsx -->
+          <div id="home-content" class="max-w-2xl mx-auto py-10 px-4">
+            <!-- Hero Card -->
+            <div
+              class="relative bg-[#252526] border border-[#3c3c3c] rounded-xl p-8 shadow-xl mb-6 overflow-hidden"
+            >
+              <!-- Glow Background -->
+              <div
+                class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
+                style="
+                  background: radial-gradient(
+                    ellipse at top left,
+                    #007acc 0%,
+                    transparent 60%
+                  );
+                "
+              ></div>
+
+              <div class="flex items-center gap-6 relative z-10">
+                <!-- Profile Image with Glow -->
+                <div class="relative shrink-0">
+                  <div
+                    class="absolute inset-0 rounded-full blur-md opacity-50"
+                    style="background: #007acc"
+                  ></div>
+                  <div
+                    class="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#007acc]"
+                  >
+                    <img
+                      src="/portfolio/assets/photo_2026-06-27_15-44-00-3R089wi5.jpg"
+                      alt="Hossein Shafiei"
+                      class="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <!-- Online Badge -->
+                  <div class="flex items-center gap-2 mb-2">
+                    <span
+                      class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
+                    ></span>
+                    <span class="text-green-400 text-xs"
+                      >Available for work</span
+                    >
+                  </div>
+                  <h1 class="text-2xl font-bold text-white mb-1">
+                    Hossein Shafiei
+                  </h1>
+                  <p class="text-[#4ec9b0] text-sm mb-2">
+                    Frontend Developer & UI Designer
+                  </p>
+                  <p class="text-gray-500 text-xs">
+                    // Frontend developer with a designer's eye
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex gap-3 mb-6">
+              <button
+                onclick="document.querySelector('[data-file=projects]').click()"
+                class="flex-1 py-2 bg-[#007acc] hover:bg-[#005f9e] text-white text-xs rounded-lg transition-all duration-200 hover:shadow-lg font-medium"
+              >
+                View Projects →
+              </button>
+              <button
+                onclick="document.querySelector('[data-file=contact]').click()"
+                class="flex-1 py-2 border border-[#3c3c3c] hover:border-[#007acc] hover:text-[#007acc] text-gray-300 text-xs rounded-lg transition-all duration-200 font-medium"
+              >
+                Contact Me
+              </button>
+              <a
+                href="https://github.com/ihosuix"
+                target="_blank"
+                class="px-4 py-2 border border-[#3c3c3c] hover:border-gray-400 text-gray-400 hover:text-white text-xs rounded-lg transition-all duration-200 flex items-center"
+              >
+                GitHub
+              </a>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-3 gap-3 mb-6">
+              <div
+                class="bg-[#252526] border border-[#3c3c3c] hover:border-[#007acc] rounded-lg p-4 text-center shadow transition-colors duration-200 cursor-default"
+              >
+                <div class="text-2xl font-bold text-[#007acc] mb-1">6+</div>
+                <div class="text-gray-400 text-xs">Years Experience</div>
+              </div>
+              <div
+                class="bg-[#252526] border border-[#3c3c3c] hover:border-[#4ec9b0] rounded-lg p-4 text-center shadow transition-colors duration-200 cursor-default"
+              >
+                <div class="text-2xl font-bold text-[#4ec9b0] mb-1">4+</div>
+                <div class="text-gray-400 text-xs">Technologies</div>
+              </div>
+              <div
+                class="bg-[#252526] border border-[#3c3c3c] hover:border-purple-400 rounded-lg p-4 text-center shadow transition-colors duration-200 cursor-default"
+              >
+                <div class="text-2xl font-bold text-purple-400 mb-1">UI</div>
+                <div class="text-gray-400 text-xs">Focused Mindset</div>
+              </div>
+            </div>
+
+            <!-- Tech Stack -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-5 shadow"
+            >
+              <p class="text-gray-500 text-xs mb-3 uppercase tracking-widest">
+                Tech Stack
+              </p>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-orange-300 text-xs rounded-lg"
+                  >HTML</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-sky-300 text-xs rounded-lg"
+                  >CSS</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-yellow-300 text-xs rounded-lg"
+                  >JavaScript</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-cyan-300 text-xs rounded-lg"
+                  >Tailwind</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-purple-300 text-xs rounded-lg"
+                  >Figma</span
+                >
+                <span
+                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-red-300 text-xs rounded-lg"
+                  >Git</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- about.html -->
+          <div id="about-content" class="max-w-2xl mx-auto py-10 px-4">
+            <!-- Header -->
+            <div class="mb-6">
+              <p class="text-gray-500 text-xs uppercase tracking-widest mb-1">
+                about.html
+              </p>
+              <h2 class="text-2xl font-bold text-white">About Me</h2>
+            </div>
+
+            <!-- Bio Card -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-6 shadow-lg mb-6"
+            >
+              <p class="text-gray-300 text-sm leading-7">
+                With around
+                <span class="text-[#4ec9b0] font-medium">6 years</span> of
+                hands-on experience, my journey started with pre-built blog
+                platforms, moved into WordPress development and plugins, then
+                evolved into UI design — and now I'm fully focused on frontend
+                development. Every step shaped how I think about building clean,
+                user-friendly interfaces today.
+              </p>
+            </div>
+
+            <!-- Badges -->
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span
+                class="px-3 py-1 bg-[#252526] border border-[#007acc] text-[#007acc] text-xs rounded-lg"
+                >6+ Years Experience</span
+              >
+              <span
+                class="px-3 py-1 bg-[#252526] border border-[#4ec9b0] text-[#4ec9b0] text-xs rounded-lg"
+                >UI-Focused Mindset</span
+              >
+              <span
+                class="px-3 py-1 bg-[#252526] border border-purple-400 text-purple-400 text-xs rounded-lg"
+                >Frontend Path</span
+              >
+            </div>
+
+            <!-- Journey Timeline -->
+            <div class="mb-2">
+              <p class="text-gray-500 text-xs uppercase tracking-widest mb-4">
+                My Journey
+              </p>
+              <div class="relative border-l border-[#3c3c3c] pl-6 space-y-6">
+                <div class="relative">
+                  <div
+                    class="absolute -left-[25px] w-3 h-3 rounded-full bg-[#3c3c3c] border-2 border-[#3c3c3c]"
+                  ></div>
+                  <p class="text-gray-500 text-xs mb-1">Start</p>
+                  <h4 class="text-white font-medium text-sm mb-1">
+                    Blog Platforms
+                  </h4>
+                  <p class="text-gray-400 text-xs leading-relaxed">
+                    Started with ready-made blogging tools, learning the basics
+                    of web structure and content management.
+                  </p>
+                </div>
+
+                <div class="relative">
+                  <div
+                    class="absolute -left-[25px] w-3 h-3 rounded-full bg-[#3c3c3c] border-2 border-[#3c3c3c]"
+                  ></div>
+                  <p class="text-gray-500 text-xs mb-1">Phase 2</p>
+                  <h4 class="text-white font-medium text-sm mb-1">
+                    WordPress Development
+                  </h4>
+                  <p class="text-gray-400 text-xs leading-relaxed">
+                    Built and customized WordPress sites, developed plugins and
+                    themes.
+                  </p>
+                </div>
+
+                <div class="relative">
+                  <div
+                    class="absolute -left-[25px] w-3 h-3 rounded-full bg-[#3c3c3c] border-2 border-[#3c3c3c]"
+                  ></div>
+                  <p class="text-gray-500 text-xs mb-1">Phase 3</p>
+                  <h4 class="text-white font-medium text-sm mb-1">UI Design</h4>
+                  <p class="text-gray-400 text-xs leading-relaxed">
+                    Shifted focus to user interface design, learning design
+                    principles and tools like Figma.
+                  </p>
+                </div>
+
+                <div class="relative">
+                  <div
+                    class="absolute -left-[25px] w-3 h-3 rounded-full bg-[#007acc] border-2 border-[#007acc]"
+                  ></div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <p class="text-[#007acc] text-xs">Now</p>
+                    <span
+                      class="px-2 py-0.5 bg-[#007acc] bg-opacity-20 text-[#007acc] text-xs rounded"
+                      >current</span
+                    >
+                  </div>
+                  <h4 class="text-white font-medium text-sm mb-1">
+                    Frontend Development
+                  </h4>
+                  <p class="text-gray-400 text-xs leading-relaxed">
+                    Currently mastering HTML, CSS, JavaScript, Tailwind and
+                    modern frontend practices.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- skills.json -->
+          <div id="skills-content" class="max-w-2xl mx-auto py-10 px-4">
+            <!-- Header -->
+            <div class="mb-6">
+              <p class="text-gray-500 text-xs uppercase tracking-widest mb-1">
+                skills.json
+              </p>
+              <h2 class="text-2xl font-bold text-white">Skills</h2>
+            </div>
+
+            <!-- Languages -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-6 shadow-lg mb-4"
+            >
+              <div class="flex items-center gap-2 mb-4">
+                <span class="w-2 h-2 rounded-full bg-orange-400"></span>
+                <p
+                  class="text-gray-300 text-xs uppercase tracking-widest font-medium"
+                >
+                  Languages
+                </p>
+              </div>
+              <div class="grid grid-cols-3 gap-3">
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-orange-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-orange-300 font-bold text-sm mb-1">HTML</p>
+                  <p class="text-gray-500 text-xs">Markup</p>
+                </div>
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-sky-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-sky-300 font-bold text-sm mb-1">CSS</p>
+                  <p class="text-gray-500 text-xs">Styling</p>
+                </div>
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-yellow-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-yellow-300 font-bold text-sm mb-1">
+                    JavaScript
+                  </p>
+                  <p class="text-gray-500 text-xs">Logic</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Frameworks & Libraries -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-6 shadow-lg mb-4"
+            >
+              <div class="flex items-center gap-2 mb-4">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                <p
+                  class="text-gray-300 text-xs uppercase tracking-widest font-medium"
+                >
+                  Frameworks & Libraries
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-cyan-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-cyan-300 font-bold text-sm mb-1">
+                    Tailwind CSS
+                  </p>
+                  <p class="text-gray-500 text-xs">Utility-first CSS</p>
+                </div>
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-blue-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-blue-300 font-bold text-sm mb-1">
+                    React
+                    <span class="text-gray-600 text-xs font-normal"
+                      >learning</span
+                    >
+                  </p>
+                  <p class="text-gray-500 text-xs">UI Library</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Design -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-6 shadow-lg mb-4"
+            >
+              <div class="flex items-center gap-2 mb-4">
+                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                <p
+                  class="text-gray-300 text-xs uppercase tracking-widest font-medium"
+                >
+                  Design
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-purple-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-purple-300 font-bold text-sm mb-1">Figma</p>
+                  <p class="text-gray-500 text-xs">UI Design</p>
+                </div>
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-purple-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-purple-300 font-bold text-sm mb-1">
+                    UI Principles
+                  </p>
+                  <p class="text-gray-500 text-xs">Design Theory</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-6 shadow-lg"
+            >
+              <div class="flex items-center gap-2 mb-4">
+                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                <p
+                  class="text-gray-300 text-xs uppercase tracking-widest font-medium"
+                >
+                  Tools
+                </p>
+              </div>
+              <div class="grid grid-cols-3 gap-3">
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-red-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-red-300 font-bold text-sm mb-1">Git</p>
+                  <p class="text-gray-500 text-xs">Version Control</p>
+                </div>
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-gray-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-gray-300 font-bold text-sm mb-1">GitHub</p>
+                  <p class="text-gray-500 text-xs">Code Hosting</p>
+                </div>
+                <div
+                  class="bg-[#1e1e1e] border border-[#3c3c3c] hover:border-blue-400 rounded-lg p-3 text-center transition-colors duration-200"
+                >
+                  <p class="text-blue-300 font-bold text-sm mb-1">VS Code</p>
+                  <p class="text-gray-500 text-xs">Editor</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- projects.js -->
+          <div id="projects-content" class="max-w-2xl mx-auto py-10 px-4">
+            <!-- Header -->
+            <div class="mb-6">
+              <p class="text-gray-500 text-xs uppercase tracking-widest mb-1">
+                projects.js
+              </p>
+              <h2 class="text-2xl font-bold text-white">Projects</h2>
+            </div>
+
+            <!-- Project Card 1 -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl overflow-hidden shadow-lg mb-4 hover:border-[#007acc] transition-colors duration-200"
+            >
+              <!-- Project Image Placeholder -->
+              <div
+                class="w-full h-40 bg-[#1e1e1e] flex items-center justify-center border-b border-[#3c3c3c]"
+              >
+                <div class="text-center">
+                  <div class="text-4xl mb-2">🖼️</div>
+                  <p class="text-gray-600 text-xs">Project Screenshot</p>
+                </div>
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 class="text-white font-bold text-base mb-1">
+                      Project Name
+                    </h3>
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"
+                      ></span>
+                      <span class="text-yellow-400 text-xs">In Progress</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                  Short description of the project — what it does, what problem
+                  it solves, and what you learned from building it.
+                </p>
+
+                <!-- Tech Tags -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-orange-300 text-xs rounded"
+                    >HTML</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-sky-300 text-xs rounded"
+                    >CSS</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-yellow-300 text-xs rounded"
+                    >JavaScript</span
+                  >
+                </div>
+
+                <!-- Links -->
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="px-3 py-1.5 bg-[#007acc] hover:bg-[#005f9e] text-white text-xs rounded-lg transition-colors"
+                  >
+                    Live Demo →
+                  </a>
+                  <a
+                    href="#"
+                    class="px-3 py-1.5 border border-[#3c3c3c] hover:border-gray-400 text-gray-300 text-xs rounded-lg transition-colors"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl overflow-hidden shadow-lg mb-6 hover:border-[#007acc] transition-colors duration-200"
+            >
+              <div
+                class="w-full h-40 bg-[#1e1e1e] flex items-center justify-center border-b border-[#3c3c3c]"
+              >
+                <div class="text-center">
+                  <div class="text-4xl mb-2">🖼️</div>
+                  <p class="text-gray-600 text-xs">Project Screenshot</p>
+                </div>
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-start justify-between mb-3">
+                  <div>
+                    <h3 class="text-white font-bold text-base mb-1">
+                      Project Name
+                    </h3>
+                    <div class="flex items-center gap-2">
+                      <span
+                        class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"
+                      ></span>
+                      <span class="text-yellow-400 text-xs">In Progress</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="text-gray-400 text-xs leading-relaxed mb-4">
+                  Short description of the project — what it does, what problem
+                  it solves, and what you learned from building it.
+                </p>
+
+                <div class="flex flex-wrap gap-2 mb-4">
+                  <span
+                    class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-cyan-300 text-xs rounded"
+                    >Tailwind</span
+                  >
+                  <span
+                    class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-yellow-300 text-xs rounded"
+                    >JavaScript</span
+                  >
+                </div>
+
+                <div class="flex gap-3">
+                  <a
+                    href="#"
+                    class="px-3 py-1.5 bg-[#007acc] hover:bg-[#005f9e] text-white text-xs rounded-lg transition-colors"
+                  >
+                    Live Demo →
+                  </a>
+                  <a
+                    href="#"
+                    class="px-3 py-1.5 border border-[#3c3c3c] hover:border-gray-400 text-gray-300 text-xs rounded-lg transition-colors"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coming Soon Note -->
+            <div
+              class="bg-[#252526] border border-dashed border-[#3c3c3c] rounded-xl p-6 text-center"
+            >
+              <p class="text-gray-600 text-xs">
+                More projects coming soon — currently building something worth
+                sharing.
+              </p>
+            </div>
+          </div>
+
+          <!-- experience.ts -->
+          <div id="experience-content" class="max-w-2xl mx-auto py-10 px-4">
+            <!-- Header -->
+            <div class="mb-6">
+              <p class="text-gray-500 text-xs uppercase tracking-widest mb-1">
+                experience.ts
+              </p>
+              <h2 class="text-2xl font-bold text-white">My Journey</h2>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative border-l-2 border-[#3c3c3c] pl-6 space-y-8">
+              <!-- Step 1 -->
+              <div class="relative">
+                <div
+                  class="absolute -left-[31px] w-4 h-4 rounded-full bg-[#252526] border-2 border-[#3c3c3c]"
+                ></div>
+                <div
+                  class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-5 shadow hover:border-[#3c3c3c] transition-colors duration-200"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-white font-bold text-sm">Blog Platforms</h4>
+                    <span class="text-gray-600 text-xs">Start</span>
+                  </div>
+                  <p class="text-gray-400 text-xs leading-relaxed">
+                    Started with ready-made blogging tools, learning the basics
+                    of web structure and content management.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="relative">
+                <div
+                  class="absolute -left-[31px] w-4 h-4 rounded-full bg-[#252526] border-2 border-[#3c3c3c]"
+                ></div>
+                <div
+                  class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-5 shadow hover:border-[#3c3c3c] transition-colors duration-200"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-white font-bold text-sm">
+                      WordPress Development
+                    </h4>
+                    <span class="text-gray-600 text-xs">Phase 2</span>
+                  </div>
+                  <p class="text-gray-400 text-xs leading-relaxed">
+                    Built and customized WordPress sites, developed plugins and
+                    themes from scratch.
+                  </p>
+                  <div class="flex gap-2 mt-3">
+                    <span
+                      class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-blue-300 text-xs rounded"
+                      >WordPress</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-gray-300 text-xs rounded"
+                      >PHP</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="relative">
+                <div
+                  class="absolute -left-[31px] w-4 h-4 rounded-full bg-[#252526] border-2 border-[#3c3c3c]"
+                ></div>
+                <div
+                  class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-5 shadow hover:border-[#3c3c3c] transition-colors duration-200"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <h4 class="text-white font-bold text-sm">UI Design</h4>
+                    <span class="text-gray-600 text-xs">Phase 3</span>
+                  </div>
+                  <p class="text-gray-400 text-xs leading-relaxed">
+                    Shifted focus to user interface design, learning design
+                    principles and tools like Figma.
+                  </p>
+                  <div class="flex gap-2 mt-3">
+                    <span
+                      class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-purple-300 text-xs rounded"
+                      >Figma</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-purple-300 text-xs rounded"
+                      >UI Principles</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 4 (Current) -->
+              <div class="relative">
+                <div
+                  class="absolute -left-[31px] w-4 h-4 rounded-full bg-[#007acc] border-2 border-[#007acc] shadow-lg"
+                  style="box-shadow: 0 0 8px #007acc"
+                ></div>
+                <div
+                  class="bg-[#252526] border border-[#007acc] rounded-xl p-5 shadow-lg"
+                  style="box-shadow: 0 0 20px rgba(0, 122, 204, 0.1)"
+                >
+                  <div class="flex items-center justify-between mb-2">
+                    <div class="flex items-center gap-2">
+                      <h4 class="text-white font-bold text-sm">
+                        Frontend Development
+                      </h4>
+                      <span
+                        class="px-2 py-0.5 bg-[#007acc] bg-opacity-20 text-[#007acc] text-xs rounded"
+                        >current</span
+                      >
+                    </div>
+                    <div class="flex items-center gap-1">
+                      <span
+                        class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"
+                      ></span>
+                      <span class="text-green-400 text-xs">Active</span>
+                    </div>
+                  </div>
+                  <p class="text-gray-400 text-xs leading-relaxed">
+                    Currently mastering HTML, CSS, JavaScript, Tailwind and
+                    modern frontend practices. Building real projects and
+                    expanding into React.
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-3">
+                    <span
+                      class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-orange-300 text-xs rounded"
+                      >HTML</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-sky-300 text-xs rounded"
+                      >CSS</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-yellow-300 text-xs rounded"
+                      >JavaScript</span
+                    >
+                    <span
+                      class="px-2 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-cyan-300 text-xs rounded"
+                      >Tailwind</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- contact.css -->
+          <div id="contact-content" class="max-w-2xl mx-auto py-10 px-4">
+            <!-- Header -->
+            <div class="mb-6">
+              <p class="text-gray-500 text-xs uppercase tracking-widest mb-1">
+                contact.css
+              </p>
+              <h2 class="text-2xl font-bold text-white">Get In Touch</h2>
+            </div>
+
+            <!-- Intro Card -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-6 shadow-lg mb-6"
+            >
+              <p class="text-gray-400 text-sm leading-relaxed">
+                Have a project in mind or just want to say hi? Feel free to
+                reach out through any of the channels below — I'm always open to
+                new opportunities and collaborations.
+              </p>
+            </div>
+
+            <!-- Contact Links -->
+            <div class="grid gap-3 mb-6">
+              <a
+                href="mailto:ihosuix@gmail.com"
+                class="flex items-center gap-4 bg-[#252526] border border-[#3c3c3c] hover:border-[#007acc] rounded-xl p-4 shadow transition-all duration-200 group"
+              >
+                <div
+                  class="w-9 h-9 rounded-lg bg-[#1e1e1e] border border-[#3c3c3c] flex items-center justify-center shrink-0 group-hover:border-[#007acc] transition-colors"
+                >
+                  <span class="text-[#4ec9b0] text-sm">@</span>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-xs mb-0.5">Email</p>
+                  <p class="text-white text-sm">ihosuix@gmail.com</p>
+                </div>
+                <span
+                  class="ml-auto text-gray-600 group-hover:text-[#007acc] transition-colors text-xs"
+                  >→</span
+                >
+              </a>
+
+              <a
+                href="tel:09337409966"
+                class="flex items-center gap-4 bg-[#252526] border border-[#3c3c3c] hover:border-green-500 rounded-xl p-4 shadow transition-all duration-200 group"
+              >
+                <div
+                  class="w-9 h-9 rounded-lg bg-[#1e1e1e] border border-[#3c3c3c] flex items-center justify-center shrink-0 group-hover:border-green-500 transition-colors"
+                >
+                  <span class="text-green-400 text-sm">📞</span>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-xs mb-0.5">Phone</p>
+                  <p class="text-white text-sm">0933 740 9966</p>
+                </div>
+                <span
+                  class="ml-auto text-gray-600 group-hover:text-green-500 transition-colors text-xs"
+                  >→</span
+                >
+              </a>
+
+              <a
+                href="https://github.com/ihosuix"
+                target="_blank"
+                class="flex items-center gap-4 bg-[#252526] border border-[#3c3c3c] hover:border-gray-400 rounded-xl p-4 shadow transition-all duration-200 group"
+              >
+                <div
+                  class="w-9 h-9 rounded-lg bg-[#1e1e1e] border border-[#3c3c3c] flex items-center justify-center shrink-0 group-hover:border-gray-400 transition-colors"
+                >
+                  <span class="text-gray-300 text-sm">GH</span>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-xs mb-0.5">GitHub</p>
+                  <p class="text-white text-sm">github.com/ihosuix</p>
+                </div>
+                <span
+                  class="ml-auto text-gray-600 group-hover:text-gray-300 transition-colors text-xs"
+                  >→</span
+                >
+              </a>
+
+              <a
+                href="https://t.me/ihosuix"
+                target="_blank"
+                class="flex items-center gap-4 bg-[#252526] border border-[#3c3c3c] hover:border-sky-400 rounded-xl p-4 shadow transition-all duration-200 group"
+              >
+                <div
+                  class="w-9 h-9 rounded-lg bg-[#1e1e1e] border border-[#3c3c3c] flex items-center justify-center shrink-0 group-hover:border-sky-400 transition-colors"
+                >
+                  <span class="text-sky-400 text-sm">TG</span>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-xs mb-0.5">Telegram</p>
+                  <p class="text-white text-sm">@ihosuix</p>
+                </div>
+                <span
+                  class="ml-auto text-gray-600 group-hover:text-sky-400 transition-colors text-xs"
+                  >→</span
+                >
+              </a>
+
+              <a
+                href="https://instagram.com/ihosuix"
+                target="_blank"
+                class="flex items-center gap-4 bg-[#252526] border border-[#3c3c3c] hover:border-pink-500 rounded-xl p-4 shadow transition-all duration-200 group"
+              >
+                <div
+                  class="w-9 h-9 rounded-lg bg-[#1e1e1e] border border-[#3c3c3c] flex items-center justify-center shrink-0 group-hover:border-pink-500 transition-colors"
+                >
+                  <span class="text-pink-400 text-sm">IG</span>
+                </div>
+                <div>
+                  <p class="text-gray-500 text-xs mb-0.5">Instagram</p>
+                  <p class="text-white text-sm">@ihosuix</p>
+                </div>
+                <span
+                  class="ml-auto text-gray-600 group-hover:text-pink-500 transition-colors text-xs"
+                  >→</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- README.md -->
+          <div id="readme-content" class="max-w-2xl mx-auto py-10 px-4">
+            <!-- Header -->
+            <div class="mb-6">
+              <p class="text-gray-500 text-xs uppercase tracking-widest mb-1">
+                README.md
+              </p>
+              <h2 class="text-2xl font-bold text-white">👋 Welcome</h2>
+            </div>
+
+            <!-- Welcome Card -->
+            <div
+              class="relative bg-[#252526] border border-[#3c3c3c] rounded-xl p-6 shadow-lg mb-6 overflow-hidden"
+            >
+              <div
+                class="absolute top-0 right-0 w-40 h-40 opacity-5 pointer-events-none"
+                style="
+                  background: radial-gradient(
+                    ellipse at top right,
+                    #007acc 0%,
+                    transparent 60%
+                  );
+                "
+              ></div>
+              <h3 class="text-white font-bold text-base mb-3">
+                Hossein Shafiei
+              </h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                This portfolio is built to look and feel like
+                <span class="text-[#4ec9b0]">VS Code</span> — because that's
+                where I spend most of my time as a frontend developer. Feel free
+                to explore the files on the left, just like you would in a real
+                project.
+              </p>
+            </div>
+
+            <!-- Quick Navigation -->
+            <div
+              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-6 shadow-lg mb-6"
+            >
+              <p class="text-gray-500 text-xs uppercase tracking-widest mb-4">
+                Quick Navigation
+              </p>
+              <div class="space-y-2">
+                <button
+                  onclick="document.querySelector('[data-file=about]').click()"
+                  class="w-full flex items-center gap-3 p-3 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-[#007acc] rounded-lg transition-colors duration-200 text-left group"
+                >
+                  <span class="text-orange-300 text-xs font-bold w-20 shrink-0"
+                    >about.html</span
+                  >
+                  <span
+                    class="text-gray-400 text-xs group-hover:text-gray-300 transition-colors"
+                    >Learn more about me</span
+                  >
+                  <span
+                    class="ml-auto text-gray-600 group-hover:text-[#007acc] transition-colors text-xs"
+                    >→</span
+                  >
+                </button>
+
+                <button
+                  onclick="document.querySelector('[data-file=skills]').click()"
+                  class="w-full flex items-center gap-3 p-3 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-[#007acc] rounded-lg transition-colors duration-200 text-left group"
+                >
+                  <span class="text-yellow-300 text-xs font-bold w-20 shrink-0"
+                    >skills.json</span
+                  >
+                  <span
+                    class="text-gray-400 text-xs group-hover:text-gray-300 transition-colors"
+                    >My technical skills</span
+                  >
+                  <span
+                    class="ml-auto text-gray-600 group-hover:text-[#007acc] transition-colors text-xs"
+                    >→</span
+                  >
+                </button>
+
+                <button
+                  onclick="
+                    document.querySelector('[data-file=projects]').click()
+                  "
+                  class="w-full flex items-center gap-3 p-3 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-[#007acc] rounded-lg transition-colors duration-200 text-left group"
+                >
+                  <span class="text-yellow-400 text-xs font-bold w-20 shrink-0"
+                    >projects.js</span
+                  >
+                  <span
+                    class="text-gray-400 text-xs group-hover:text-gray-300 transition-colors"
+                    >What I'm working on</span
+                  >
+                  <span
+                    class="ml-auto text-gray-600 group-hover:text-[#007acc] transition-colors text-xs"
+                    >→</span
+                  >
+                </button>
+
+                <button
+                  onclick="
+                    document.querySelector('[data-file=experience]').click()
+                  "
+                  class="w-full flex items-center gap-3 p-3 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-[#007acc] rounded-lg transition-colors duration-200 text-left group"
+                >
+                  <span class="text-blue-400 text-xs font-bold w-20 shrink-0"
+                    >experience.ts</span
+                  >
+                  <span
+                    class="text-gray-400 text-xs group-hover:text-gray-300 transition-colors"
+                    >My career journey</span
+                  >
+                  <span
+                    class="ml-auto text-gray-600 group-hover:text-[#007acc] transition-colors text-xs"
+                    >→</span
+                  >
+                </button>
+
+                <button
+                  onclick="
+                    document.querySelector('[data-file=contact]').click()
+                  "
+                  class="w-full flex items-center gap-3 p-3 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-[#007acc] rounded-lg transition-colors duration-200 text-left group"
+                >
+                  <span class="text-sky-300 text-xs font-bold w-20 shrink-0"
+                    >contact.css</span
+                  >
+                  <span
+                    class="text-gray-400 text-xs group-hover:text-gray-300 transition-colors"
+                    >Get in touch</span
+                  >
+                  <span
+                    class="ml-auto text-gray-600 group-hover:text-[#007acc] transition-colors text-xs"
+                    >→</span
+                  >
+                </button>
+              </div>
+            </div>
+
+            <!-- Terminal Tip -->
+            <div
+              class="bg-[#252526] border border-dashed border-[#3c3c3c] rounded-xl p-4 flex items-center gap-3"
+            >
+              <span class="text-green-400 text-sm shrink-0">➜</span>
+              <p class="text-gray-500 text-xs">
+                Try typing <code class="text-[#4ec9b0]">help</code> in the
+                terminal below to explore more commands 👇
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal -->
+        <div
+          class="h-40 bg-[#1e1e1e] border-t border-[#333333] overflow-y-auto p-2 text-sm"
+        >
+          <div class="flex items-center gap-2 mb-2 text-gray-400">
+            <span class="text-green-400">●</span>
+            <span>bash</span>
+          </div>
+
+          <div id="terminal-welcome" class="text-gray-400 mb-1"></div>
+
+          <div id="terminal-output" class="text-gray-300 mb-2"></div>
+
+          <div class="flex items-center gap-2">
+            <span class="text-green-400">➜</span>
+            <span class="text-[#4ec9b0]">portfolio</span>
+            <span class="text-gray-500">$</span>
+            <input
+              id="terminal-input"
+              type="text"
+              class="flex-1 bg-transparent outline-none text-white"
+              autocomplete="off"
+              placeholder=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div
+      class="h-6 bg-[#007acc] flex items-center justify-between px-3 text-xs text-white"
+    >
+      <div class="flex items-center gap-4">
+        <span class="flex items-center gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-3 h-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 3v12M6 15a3 3 0 106 0 3 3 0 00-6 0zM18 9a3 3 0 10-6 0 3 3 0 006 0zM18 9v3a6 6 0 01-6 6"
+            />
+          </svg>
+          main
+        </span>
+        <span>⚡ 0</span>
+      </div>
+
+      <div class="flex-1"></div>
+
+      <div class="flex items-center gap-4">
+        <span>UTF-8</span>
+        <span id="status-language">JSX</span>
+        <span>Ln 1, Col 1</span>
+      </div>
+    </div>
+
+  </body>
+</html>
