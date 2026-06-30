@@ -48,6 +48,7 @@ function showFile(fileName) {
   renderTabs();
   highlightSidebar(fileName);
   document.getElementById('status-language').textContent = fileLang[fileName] || '';
+  document.getElementById('breadcrumb-file').textContent = filesMeta[fileName].label;
 }
 
 // ── رندر تب‌ها ───────────────────────────────────────────
@@ -57,10 +58,20 @@ function renderTabs() {
     const meta    = filesMeta[file];
     const isActive = file === activeFile;
     const tab     = document.createElement('div');
-    tab.className = `flex items-center gap-2 px-4 h-full border-r border-[#1e1e1e] cursor-pointer text-sm ${
-      isActive ? 'bg-[#1e1e1e] text-white' : 'bg-[#2d2d2d] text-gray-400 hover:bg-[#2a2d2e]'
+    tab.className = `relative flex items-center gap-2 px-4 h-full border-r border-[#1e1e1e] cursor-pointer text-xs shrink-0 transition-colors duration-150 ${
+      isActive
+        ? 'bg-[#1e1e1e] text-white'
+        : 'bg-[#2d2d2d] text-gray-500 hover:bg-[#2a2d2e] hover:text-gray-300'
     }`;
-    tab.innerHTML = `${meta.icon}<span>${meta.label}</span><button class="close-btn ml-2 text-gray-500 hover:text-white text-xs">✕</button>`;
+
+    // خط آبی بالای تب فعال
+    if (isActive) {
+      const topLine = document.createElement('div');
+      topLine.className = 'absolute top-0 left-0 right-0 h-[2px] bg-[#007acc]';
+      tab.appendChild(topLine);
+    }
+
+    tab.innerHTML += `${meta.icon}<span>${meta.label}</span><button class="close-btn ml-2 text-gray-600 hover:text-white text-xs leading-none">✕</button>`;
 
     tab.addEventListener('click', (e) => {
       if (e.target.classList.contains('close-btn')) {
