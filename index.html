@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="/src/style.css">
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <title>ihosuix</title>
@@ -21,6 +21,59 @@
 </div>
 
 <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden md:hidden"></div>
+
+<!-- Menu Bar -->
+<div class="h-7 bg-[#3c3c3c] flex items-center px-2 text-xs text-gray-400 select-none border-b border-[#2a2a2a] shrink-0">
+  <div class="relative group">
+    <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">File</button>
+    <div class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1">
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>New File</span><span class="text-gray-600">Ctrl+N</span></div>
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Open File</span><span class="text-gray-600">Ctrl+O</span></div>
+      <div class="border-t border-[#3c3c3c] my-1"></div>
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Save</span><span class="text-gray-600">Ctrl+S</span></div>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">Edit</button>
+    <div class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1">
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Undo</span><span class="text-gray-600">Ctrl+Z</span></div>
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Redo</span><span class="text-gray-600">Ctrl+Y</span></div>
+      <div class="border-t border-[#3c3c3c] my-1"></div>
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Find</span><span class="text-gray-600">Ctrl+F</span></div>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">View</button>
+    <div class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1">
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Explorer</span><span class="text-gray-600">Ctrl+Shift+E</span></div>
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Terminal</span><span class="text-gray-600">Ctrl+`</span></div>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">Go</button>
+    <div class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1">
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Go to File</span><span class="text-gray-600">Ctrl+P</span></div>
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>Go to Line</span><span class="text-gray-600">Ctrl+G</span></div>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">Terminal</button>
+    <div class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1">
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>New Terminal</span><span class="text-gray-600">Ctrl+Shift+`</span></div>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <button class="px-3 py-1 hover:bg-[#505050] rounded transition-colors">Help</button>
+    <div class="hidden group-hover:block absolute top-full left-0 bg-[#252526] border border-[#3c3c3c] rounded shadow-xl z-50 w-52 py-1">
+      <div class="px-4 py-1.5 hover:bg-[#094771] hover:text-white cursor-pointer flex justify-between"><span>About</span></div>
+    </div>
+  </div>
+</div>
 
   <!-- Main Container -->
   <div class="flex flex-1 overflow-hidden">
@@ -119,8 +172,8 @@
     <div class="flex flex-col flex-1 overflow-hidden">
 
       <!-- Tabs -->
-      <div class="h-9 bg-[#252526] flex items-center text-sm border-b border-[#1e1e1e]">
-        <div data-tab="home" class="flex items-center gap-2 px-4 h-full bg-[#1e1e1e] border-r border-[#1e1e1e] text-white cursor-pointer">
+<div class="h-9 bg-[#252526] flex items-center text-sm border-b border-[#1e1e1e] shrink-0 overflow-x-auto scrollbar-none">
+          <div data-tab="home" class="flex items-center gap-2 px-4 h-full bg-[#1e1e1e] border-r border-[#1e1e1e] text-white cursor-pointer">
           <span class="text-blue-400 font-bold text-xs">⚛</span>
           <span>home.jsx</span>
           <button class="ml-2 text-gray-500 hover:text-white text-xs">✕</button>

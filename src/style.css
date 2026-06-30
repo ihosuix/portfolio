@@ -3,3 +3,59 @@
 * {
   font-family: 'JetBrains Mono', monospace;
 }
+
+/* Mobile font fixes */
+@media (max-width: 768px) {
+  body {
+    font-size: 11px;
+  }
+
+  /* Smaller headings on mobile */
+  h1 { font-size: 1rem !important; }
+  h2 { font-size: 0.9rem !important; }
+  h3 { font-size: 0.85rem !important; }
+  h4 { font-size: 0.8rem !important; }
+
+  /* Smaller badges and tags */
+  .text-xs { font-size: 10px !important; }
+  .text-sm { font-size: 11px !important; }
+
+  #home-content h1,
+  #about-content h2,
+  #skills-content h2,
+  #projects-content h2,
+  #experience-content h2,
+  #contact-content h2,
+  #readme-content h2 {
+    font-size: 1.25rem;
+  }
+
+  #home-content .text-2xl {
+    font-size: 1.1rem;
+  }
+
+  .max-w-2xl {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Tab text smaller on mobile */
+  [data-tab] span:not(.text-xs) {
+    font-size: 11px;
+  }
+
+  /* Terminal font */
+  #terminal-input,
+  #terminal-output,
+  #terminal-welcome {
+    font-size: 11px;
+  }
+}
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
