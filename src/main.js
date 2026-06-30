@@ -29,14 +29,25 @@ const editorArea = document.querySelector('.flex-1.overflow-y-auto.p-4');
 function showFile(fileName) {
   Object.keys(filesMeta).forEach(file => {
     const el = document.getElementById(`${file}-content`);
-    if (el) el.style.display = file === fileName ? 'block' : 'none';
+    if (el) el.style.display = 'none';
   });
+
+  const target = document.getElementById(`${fileName}-content`);
+  if (target) {
+    target.style.display = 'block';
+    target.style.opacity = '0';
+    target.style.transition = 'opacity 0.15s ease';
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        target.style.opacity = '1';
+      });
+    });
+  }
+
   activeFile = fileName;
   renderTabs();
   highlightSidebar(fileName);
-
-    document.getElementById('status-language').textContent = fileLang[fileName] || '';
-
+  document.getElementById('status-language').textContent = fileLang[fileName] || '';
 }
 
 // ── رندر تب‌ها ───────────────────────────────────────────
@@ -181,8 +192,26 @@ terminalInput.addEventListener('keydown', (e) => {
   terminalOutput.parentElement.scrollTop = terminalOutput.parentElement.scrollHeight;
 });
 
+// ── Typing Effect ─────────────────────────────────────────
+function typeText(elementId, text, speed = 30) {
+  const el = document.getElementById(elementId);
+  if (!el) return;
+  el.innerHTML = '';
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < text.length) {
+      el.innerHTML = text.slice(0, i + 1);
+      i++;
+    } else {
+      clearInterval(interval);
+      el.innerHTML = 'Welcome to Hossein\'s terminal. Type <span class="text-[#4ec9b0]">help</span> to see available commands.';
+    }
+  }, speed);
+}
+
 // ── init ─────────────────────────────────────────────────
 showFile('home');
+typeText('terminal-welcome', 'Welcome to Hossein\'s terminal. Type \'help\' to see available commands.');
 
 // ── موبایل Sidebar Toggle ─────────────────────────────────
 const sidebar        = document.getElementById('sidebar');
