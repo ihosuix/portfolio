@@ -59,3 +59,14 @@
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+
+/* cursor چشمک‌زن ترمینال */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+#terminal-cursor {
+  animation: blink 1s step-end infinite;
+  display: inline-block;
+}

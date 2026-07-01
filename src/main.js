@@ -248,3 +248,32 @@ document.querySelectorAll('[data-file]').forEach(item => {
     if (window.innerWidth < 768) closeSidebar();
   });
 });
+
+// cursor ترمینال
+const terminalCursor = document.getElementById('terminal-cursor');
+const terminalInputEl = document.getElementById('terminal-input');
+
+// یه span مخفی برای اندازه‌گیری عرض متن
+const measurer = document.createElement('span');
+measurer.style.cssText = `
+  position: absolute;
+  visibility: hidden;
+  white-space: pre;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: ${getComputedStyle(terminalInputEl).fontSize};
+`;
+document.body.appendChild(measurer);
+
+terminalInputEl.addEventListener('input', () => {
+  measurer.textContent = terminalInputEl.value;
+  const textWidth = measurer.getBoundingClientRect().width;
+  terminalCursor.style.left = `${textWidth}px`;
+});
+
+terminalInputEl.addEventListener('focus', () => {
+  terminalCursor.style.display = 'inline-block';
+});
+
+terminalInputEl.addEventListener('blur', () => {
+  terminalCursor.style.display = 'none';
+});
