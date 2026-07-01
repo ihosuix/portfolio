@@ -1,3 +1,45 @@
+// ── Loading Screen ────────────────────────────────────────
+const loadingScreen  = document.getElementById('loading-screen');
+const loadingBar     = document.getElementById('loading-bar');
+const loadingMessage = document.getElementById('loading-message');
+
+const loadingSteps = [
+  { msg: 'Initializing workspace...', progress: 15 },
+  { msg: 'Loading extensions...', progress: 30 },
+  { msg: 'Reading portfolio files...', progress: 50 },
+  { msg: 'Compiling skills.json...', progress: 65 },
+  { msg: 'Mounting components...', progress: 80 },
+  { msg: 'Starting dev server...', progress: 92 },
+  { msg: 'Ready.', progress: 100 },
+];
+
+let stepIndex = 0;
+
+function runLoadingStep() {
+  if (stepIndex >= loadingSteps.length) {
+    setTimeout(() => {
+      loadingScreen.style.transition = 'opacity 0.5s ease';
+      loadingScreen.style.opacity = '0';
+      setTimeout(() => {
+        loadingScreen.style.display = 'none';
+      }, 500);
+    }, 300);
+    return;
+  }
+
+  const step = loadingSteps[stepIndex];
+  loadingBar.style.width = `${step.progress}%`;
+  loadingMessage.style.opacity = '0';
+  setTimeout(() => {
+    loadingMessage.textContent = step.msg;
+    loadingMessage.style.opacity = '1';
+  }, 150);
+
+  stepIndex++;
+  setTimeout(runLoadingStep, stepIndex === loadingSteps.length ? 400 : 300);
+}
+
+runLoadingStep();
 // فایل‌های موجود با اطلاعات تب
 const filesMeta = {
   home:       { label: 'home.jsx',       icon: '<span class="text-blue-400 font-bold text-xs">⚛</span>' },
