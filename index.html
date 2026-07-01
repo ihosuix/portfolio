@@ -11,7 +11,7 @@
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>ihosuix</title>
+    <title>Hosein shafie | portfolio</title>
   </head>
   <body
     class="bg-[#1e1e1e] text-[#d4d4d4] font-mono h-screen flex flex-col overflow-hidden"
@@ -398,144 +398,106 @@
         <!-- Editor Area -->
         <div class="flex-1 overflow-y-auto p-4 bg-[#1e1e1e]">
           <!-- home.jsx -->
-          <div id="home-content" class="max-w-2xl mx-auto py-10 px-4">
-            <!-- Hero Card -->
-            <div
-              class="relative bg-[#252526] border border-[#3c3c3c] rounded-xl p-8 shadow-xl mb-6 overflow-hidden"
-            >
-              <!-- Glow Background -->
-              <div
-                class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none"
-                style="
-                  background: radial-gradient(
-                    ellipse at top left,
-                    #007acc 0%,
-                    transparent 60%
-                  );
-                "
-              ></div>
+          <div id="home-content" class="relative min-h-full overflow-hidden">
 
-              <div class="flex items-center gap-6 relative z-10">
-                <!-- Profile Image with Glow -->
-                <div class="relative shrink-0">
-                  <div
-                    class="absolute inset-0 rounded-full blur-md opacity-50"
-                    style="background: #007acc"
-                  ></div>
-                  <div
-                    class="relative w-20 h-20 rounded-full overflow-hidden border-2 border-[#007acc]"
-                  >
-                    <img
-                      src="/assets/photo_2026-06-27_15-44-00.jpg"
-                      alt="Hossein Shafiei"
-                      class="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
+  <!-- Code Rain Background -->
+  <canvas id="code-rain" class="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none"></canvas>
 
-                <div>
-                  <!-- Online Badge -->
-                  <div class="flex items-center gap-2 mb-2">
-                    <span
-                      class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
-                    ></span>
-                    <span class="text-green-400 text-xs"
-                      >Available for work</span
-                    >
-                  </div>
-                  <h1 class="text-2xl font-bold text-white mb-1">
-                    Hossein Shafie
-                  </h1>
-                  <p class="text-[#4ec9b0] text-sm mb-2">
-                    Frontend Developer & UI Designer
-                  </p>
-                  <p class="text-gray-500 text-xs">
-                    // Frontend developer with a designer's eye
-                  </p>
-                </div>
-              </div>
-            </div>
+  <!-- Main Content -->
+  <div class="relative z-10 max-w-2xl mx-auto py-10 px-4">
 
-            <!-- CTA Buttons -->
-            <div class="flex gap-3 mb-6">
-              <button
-                onclick="document.querySelector('[data-file=projects]').click()"
-                class="flex-1 py-2 bg-[#007acc] hover:bg-[#005f9e] text-white text-xs rounded-lg transition-all duration-200 hover:shadow-lg font-medium"
-              >
-                View Projects →
-              </button>
-              <button
-                onclick="document.querySelector('[data-file=contact]').click()"
-                class="flex-1 py-2 border border-[#3c3c3c] hover:border-[#007acc] hover:text-[#007acc] text-gray-300 text-xs rounded-lg transition-all duration-200 font-medium"
-              >
-                Contact Me
-              </button>
-              <a
-                href="https://github.com/ihosuix"
-                target="_blank"
-                class="px-4 py-2 border border-[#3c3c3c] hover:border-gray-400 text-gray-400 hover:text-white text-xs rounded-lg transition-all duration-200 flex items-center"
-              >
-                GitHub
-              </a>
-            </div>
+    <!-- Hero Card with 3D Tilt -->
+    <div id="hero-card" class="relative bg-[#252526] border border-[#3c3c3c] rounded-xl p-8 shadow-xl mb-6 overflow-hidden transition-transform duration-100" style="transform-style: preserve-3d;">
+      
+      <!-- Glow Background -->
+      <div class="absolute inset-0 opacity-10 pointer-events-none" style="background: radial-gradient(ellipse at 30% 50%, #007acc 0%, transparent 60%);"></div>
 
-            <!-- Quick Stats -->
-            <div class="grid grid-cols-3 gap-3 mb-6">
-              <div
-                class="bg-[#252526] border border-[#3c3c3c] hover:border-[#007acc] rounded-lg p-4 text-center shadow transition-colors duration-200 cursor-default"
-              >
-                <div class="text-2xl font-bold text-[#007acc] mb-1">6+</div>
-                <div class="text-gray-400 text-xs">Years Experience</div>
-              </div>
-              <div
-                class="bg-[#252526] border border-[#3c3c3c] hover:border-[#4ec9b0] rounded-lg p-4 text-center shadow transition-colors duration-200 cursor-default"
-              >
-                <div class="text-2xl font-bold text-[#4ec9b0] mb-1">4+</div>
-                <div class="text-gray-400 text-xs">Technologies</div>
-              </div>
-              <div
-                class="bg-[#252526] border border-[#3c3c3c] hover:border-purple-400 rounded-lg p-4 text-center shadow transition-colors duration-200 cursor-default"
-              >
-                <div class="text-2xl font-bold text-purple-400 mb-1">UI</div>
-                <div class="text-gray-400 text-xs">Focused Mindset</div>
-              </div>
-            </div>
-
-            <!-- Tech Stack -->
-            <div
-              class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-5 shadow"
-            >
-              <p class="text-gray-500 text-xs mb-3 uppercase tracking-widest">
-                Tech Stack
-              </p>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-orange-300 text-xs rounded-lg"
-                  >HTML</span
-                >
-                <span
-                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-sky-300 text-xs rounded-lg"
-                  >CSS</span
-                >
-                <span
-                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-yellow-300 text-xs rounded-lg"
-                  >JavaScript</span
-                >
-                <span
-                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-cyan-300 text-xs rounded-lg"
-                  >Tailwind</span
-                >
-                <span
-                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-purple-300 text-xs rounded-lg"
-                  >Figma</span
-                >
-                <span
-                  class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] text-red-300 text-xs rounded-lg"
-                  >Git</span
-                >
-              </div>
-            </div>
+      <div class="relative z-10 flex items-center gap-6">
+        
+        <!-- Profile Image -->
+        <div class="relative shrink-0 group">
+          <div class="absolute inset-0 rounded-full opacity-70 blur-lg transition-all duration-300 group-hover:opacity-100 group-hover:blur-xl" style="background: #007acc;"></div>
+          <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-[#007acc] cursor-pointer" id="profile-img-wrap">
+            <img src="/assets/photo_2026-06-27_15-44-00.jpg" alt="Hossein Shafiei" class="w-full h-full object-cover transition-all duration-300" id="profile-img">
           </div>
+        </div>
+
+        <div class="flex-1">
+          <!-- Status Badge -->
+          <div class="flex items-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+            <span class="text-green-400 text-xs">Available for work</span>
+          </div>
+
+          <h1 class="text-2xl font-bold text-white mb-1">Hossein Shafiei</h1>
+
+          <!-- Typing Title -->
+          <div class="flex items-center gap-1 mb-2">
+            <span class="text-[#4ec9b0] text-sm" id="typing-title"></span>
+            <span class="w-[2px] h-4 bg-[#4ec9b0] animate-pulse inline-block"></span>
+          </div>
+
+          <p class="text-gray-500 text-xs">// Frontend developer with a designer's eye</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Buttons -->
+    <div class="flex gap-3 mb-6">
+      <button onclick="document.querySelector('[data-file=projects]').click()"
+        class="ripple flex-1 py-2.5 bg-[#007acc] hover:bg-[#005f9e] text-white text-xs rounded-lg transition-all duration-200 font-medium relative overflow-hidden">
+        View Projects →
+      </button>
+      <button onclick="document.querySelector('[data-file=contact]').click()"
+        class="ripple flex-1 py-2.5 border border-[#3c3c3c] hover:border-[#007acc] hover:text-[#007acc] text-gray-300 text-xs rounded-lg transition-all duration-200 font-medium relative overflow-hidden">
+        Contact Me
+      </button>
+      <a href="https://github.com/ihosuix" target="_blank"
+        class="px-4 py-2.5 border border-[#3c3c3c] hover:border-gray-400 text-gray-400 hover:text-white text-xs rounded-lg transition-all duration-200 flex items-center">
+        GitHub
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-3 mb-6">
+      <div class="bg-[#252526] border border-[#3c3c3c] hover:border-[#007acc] rounded-lg p-4 text-center transition-all duration-200 cursor-default group">
+        <div class="text-2xl font-bold text-[#007acc] mb-1 group-hover:scale-110 transition-transform duration-200">6+</div>
+        <div class="text-gray-400 text-xs">Years Experience</div>
+      </div>
+      <div class="bg-[#252526] border border-[#3c3c3c] hover:border-[#4ec9b0] rounded-lg p-4 text-center transition-all duration-200 cursor-default group">
+        <div class="text-2xl font-bold text-[#4ec9b0] mb-1 group-hover:scale-110 transition-transform duration-200">4+</div>
+        <div class="text-gray-400 text-xs">Technologies</div>
+      </div>
+      <div class="bg-[#252526] border border-[#3c3c3c] hover:border-purple-400 rounded-lg p-4 text-center transition-all duration-200 cursor-default group">
+        <div class="text-2xl font-bold text-purple-400 mb-1 group-hover:scale-110 transition-transform duration-200">UI</div>
+        <div class="text-gray-400 text-xs">Focused Mindset</div>
+      </div>
+    </div>
+
+    <!-- Currently Working On -->
+    <div class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-5 shadow mb-6">
+      <div class="flex items-center gap-2 mb-3">
+        <span class="w-2 h-2 rounded-full bg-yellow-500 animate-pulse"></span>
+        <p class="text-gray-500 text-xs uppercase tracking-widest">Currently Working On</p>
+      </div>
+      <p class="text-gray-300 text-sm">Building this VS Code-style portfolio & learning React</p>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="bg-[#252526] border border-[#3c3c3c] rounded-xl p-5 shadow">
+      <p class="text-gray-500 text-xs uppercase tracking-widest mb-3">Tech Stack</p>
+      <div class="flex flex-wrap gap-2">
+        <span class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-orange-400 text-orange-300 text-xs rounded-lg transition-colors duration-200 cursor-default">HTML</span>
+        <span class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-sky-400 text-sky-300 text-xs rounded-lg transition-colors duration-200 cursor-default">CSS</span>
+        <span class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-yellow-400 text-yellow-300 text-xs rounded-lg transition-colors duration-200 cursor-default">JavaScript</span>
+        <span class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-cyan-400 text-cyan-300 text-xs rounded-lg transition-colors duration-200 cursor-default">Tailwind</span>
+        <span class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-purple-400 text-purple-300 text-xs rounded-lg transition-colors duration-200 cursor-default">Figma</span>
+        <span class="px-3 py-1 bg-[#1e1e1e] border border-[#3c3c3c] hover:border-red-400 text-red-300 text-xs rounded-lg transition-colors duration-200 cursor-default">Git</span>
+      </div>
+    </div>
+
+  </div>
+</div>
 
           <!-- about.html -->
           <div id="about-content" class="max-w-2xl mx-auto py-10 px-4">

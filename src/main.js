@@ -327,3 +327,109 @@ function renderSearchResults(query) {
 searchInput.addEventListener('input', () => {
   renderSearchResults(searchInput.value);
 });
+
+// ── Code Rain ────────────────────────────────────────────
+const canvas = document.getElementById('code-rain');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+
+  const chars = '01アイウエオカキクケコabcdefghijklmnop{}[]<>/\\;:';
+  const fontSize = 12;
+  const columns = Math.floor(canvas.width / fontSize);
+  const drops = Array(columns).fill(1);
+
+  function drawRain() {
+    ctx.fillStyle = 'rgba(30, 30, 30, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#007acc';
+    ctx.font = `${fontSize}px JetBrains Mono`;
+    drops.forEach((y, i) => {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(char, i * fontSize, y * fontSize);
+      if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    });
+  }
+  setInterval(drawRain, 50);
+}
+
+// ── Typing Title Effect ───────────────────────────────────
+const titles = ['Frontend Developer', 'UI Designer'];
+let titleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingEl = document.getElementById('typing-title');
+
+function typeTitle() {
+  if (!typingEl) return;
+  const current = titles[titleIndex];
+  if (isDeleting) {
+    typingEl.textContent = current.slice(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typingEl.textContent = current.slice(0, charIndex + 1);
+    charIndex++;
+  }
+  if (!isDeleting && charIndex === current.length) {
+    setTimeout(() => isDeleting = true, 1500);
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    titleIndex = (titleIndex + 1) % titles.length;
+  }
+  setTimeout(typeTitle, isDeleting ? 50 : 80);
+}
+typeTitle();
+
+// ── 3D Tilt Effect ────────────────────────────────────────
+const heroCard = document.getElementById('hero-card');
+if (heroCard) {
+  heroCard.addEventListener('mousemove', (e) => {
+    const rect = heroCard.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -6;
+    const rotateY = ((x - centerX) / centerX) * 6;
+    heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  heroCard.addEventListener('mouseleave', () => {
+    heroCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+  });
+}
+
+// ── Ripple Effect ─────────────────────────────────────────
+document.querySelectorAll('.ripple').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    const ripple = document.createElement('span');
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    ripple.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      left: ${e.clientX - rect.left - size/2}px;
+      top: ${e.clientY - rect.top - size/2}px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: scale(0);
+      animation: rippleAnim 0.5s linear;
+      pointer-events: none;
+    `;
+    btn.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 500);
+  });
+});
+
+// ── Glitch Effect روی عکس ────────────────────────────────
+const profileImg = document.getElementById('profile-img');
+if (profileImg) {
+  profileImg.addEventListener('mouseenter', () => {
+    profileImg.style.filter = 'hue-rotate(90deg) saturate(2)';
+    setTimeout(() => profileImg.style.filter = '', 150);
+    setTimeout(() => profileImg.style.filter = 'hue-rotate(-90deg) saturate(2)', 200);
+    setTimeout(() => profileImg.style.filter = '', 350);
+  });
+}
