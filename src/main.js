@@ -277,3 +277,53 @@ terminalInputEl.addEventListener('focus', () => {
 terminalInputEl.addEventListener('blur', () => {
   terminalCursor.style.display = 'none';
 });
+
+// ── Search ───────────────────────────────────────────────
+const btnSearch     = document.getElementById('btn-search');
+const searchPanel   = document.getElementById('search-panel');
+const searchInput   = document.getElementById('search-input');
+const searchResults = document.getElementById('search-results');
+const fileList      = document.querySelector('ul.text-sm');
+
+btnSearch.addEventListener('click', () => {
+  const isOpen = !searchPanel.classList.contains('hidden');
+  if (isOpen) {
+    searchPanel.classList.add('hidden');
+    fileList.classList.remove('hidden');
+  } else {
+    searchPanel.classList.remove('hidden');
+    fileList.classList.add('hidden');
+    searchInput.focus();
+    renderSearchResults('');
+  }
+});
+
+function renderSearchResults(query) {
+  searchResults.innerHTML = '';
+  const files = Object.entries(filesMeta);
+  const filtered = query
+    ? files.filter(([, meta]) => meta.label.toLowerCase().includes(query.toLowerCase()))
+    : files;
+
+  if (filtered.length === 0) {
+    searchResults.innerHTML = '<p class="text-gray-600 text-xs">No files found</p>';
+    return;
+  }
+
+  filtered.forEach(([key, meta]) => {
+    const item = document.createElement('div');
+    item.className = 'flex items-center gap-2 px-2 py-1.5 rounded cursor-pointer hover:bg-[#2a2d2e] text-xs text-gray-300';
+    item.innerHTML = `${meta.icon}<span>${meta.label}</span>`;
+    item.addEventListener('click', () => {
+      if (!openTabs.includes(key)) openTabs.push(key);
+      showFile(key);
+      searchPanel.classList.add('hidden');
+      fileList.classList.remove('hidden');
+    });
+    searchResults.appendChild(item);
+  });
+}
+
+searchInput.addEventListener('input', () => {
+  renderSearchResults(searchInput.value);
+});

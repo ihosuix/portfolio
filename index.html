@@ -203,6 +203,7 @@
 
         <!-- Search Icon -->
         <button
+          id="btn-search"
           class="w-10 h-10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#2a2d2e] rounded-sm"
         >
           <svg
@@ -350,6 +351,20 @@
             <span>README.md</span>
           </li>
         </ul>
+
+        <!-- Search Panel (مخفی by default) -->
+        <div id="search-panel" class="hidden px-3 py-3">
+          <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">
+            Search
+          </p>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Search files..."
+            class="w-full bg-[#3c3c3c] text-white text-xs px-3 py-2 rounded outline-none border border-[#3c3c3c] focus:border-[#007acc] transition-colors placeholder-gray-500"
+          />
+          <div id="search-results" class="mt-3 space-y-1"></div>
+        </div>
       </div>
 
       <!-- Editor + Terminal Container -->
@@ -1364,10 +1379,20 @@
             <span class="text-green-400">➜</span>
             <span class="text-[#4ec9b0]">portfolio</span>
             <span class="text-gray-500">$</span>
-         <div class="relative flex-1 flex items-center">
-  <input id="terminal-input" type="text" class="w-full bg-transparent outline-none text-white caret-transparent" autocomplete="off" placeholder="" />
-  <span id="terminal-cursor" class="absolute w-[2px] h-4 bg-white" style="left: 0px;"></span>
-</div>
+            <div class="relative flex-1 flex items-center">
+              <input
+                id="terminal-input"
+                type="text"
+                class="w-full bg-transparent outline-none text-white caret-transparent"
+                autocomplete="off"
+                placeholder=""
+              />
+              <span
+                id="terminal-cursor"
+                class="absolute w-[2px] h-4 bg-white"
+                style="left: 0px"
+              ></span>
+            </div>
           </div>
         </div>
       </div>
