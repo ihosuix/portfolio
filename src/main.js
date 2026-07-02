@@ -1,16 +1,16 @@
 // ── Loading Screen ────────────────────────────────────────
-const loadingScreen  = document.getElementById('loading-screen');
-const loadingBar     = document.getElementById('loading-bar');
-const loadingMessage = document.getElementById('loading-message');
+const loadingScreen = document.getElementById("loading-screen");
+const loadingBar = document.getElementById("loading-bar");
+const loadingMessage = document.getElementById("loading-message");
 
 const loadingSteps = [
-  { msg: 'Initializing workspace...', progress: 15 },
-  { msg: 'Loading extensions...', progress: 30 },
-  { msg: 'Reading portfolio files...', progress: 50 },
-  { msg: 'Compiling skills.json...', progress: 65 },
-  { msg: 'Mounting components...', progress: 80 },
-  { msg: 'Starting dev server...', progress: 92 },
-  { msg: 'Ready.', progress: 100 },
+  { msg: "Initializing workspace...", progress: 15 },
+  { msg: "Loading extensions...", progress: 30 },
+  { msg: "Reading portfolio files...", progress: 50 },
+  { msg: "Compiling skills.json...", progress: 65 },
+  { msg: "Mounting components...", progress: 80 },
+  { msg: "Starting dev server...", progress: 92 },
+  { msg: "Ready.", progress: 100 },
 ];
 
 let stepIndex = 0;
@@ -18,10 +18,10 @@ let stepIndex = 0;
 function runLoadingStep() {
   if (stepIndex >= loadingSteps.length) {
     setTimeout(() => {
-      loadingScreen.style.transition = 'opacity 0.5s ease';
-      loadingScreen.style.opacity = '0';
+      loadingScreen.style.transition = "opacity 0.5s ease";
+      loadingScreen.style.opacity = "0";
       setTimeout(() => {
-        loadingScreen.style.display = 'none';
+        loadingScreen.style.display = "none";
       }, 500);
     }, 300);
     return;
@@ -29,10 +29,10 @@ function runLoadingStep() {
 
   const step = loadingSteps[stepIndex];
   loadingBar.style.width = `${step.progress}%`;
-  loadingMessage.style.opacity = '0';
+  loadingMessage.style.opacity = "0";
   setTimeout(() => {
     loadingMessage.textContent = step.msg;
-    loadingMessage.style.opacity = '1';
+    loadingMessage.style.opacity = "1";
   }, 150);
 
   stepIndex++;
@@ -42,46 +42,67 @@ function runLoadingStep() {
 runLoadingStep();
 // فایل‌های موجود با اطلاعات تب
 const filesMeta = {
-  home:       { label: 'home.jsx',       icon: '<span class="text-blue-400 font-bold text-xs">⚛</span>' },
-  about:      { label: 'about.html',     icon: '<span class="text-orange-400 font-bold text-xs">&lt;/&gt;</span>' },
-  projects:   { label: 'projects.js',    icon: '<span class="text-yellow-400 font-bold text-xs">JS</span>' },
-  skills:     { label: 'skills.json',    icon: '<span class="text-yellow-300 font-bold text-xs">{ }</span>' },
-  experience: { label: 'experience.ts',  icon: '<span class="text-blue-500 font-bold text-xs">TS</span>' },
-  contact:    { label: 'contact.css',    icon: '<span class="text-sky-400 font-bold text-xs">#</span>' },
-  readme:     { label: 'README.md',      icon: '<span class="text-gray-400 font-bold text-xs">M↓</span>' },
+  home: {
+    label: "home.jsx",
+    icon: '<span class="text-blue-400 font-bold text-xs">⚛</span>',
+  },
+  about: {
+    label: "about.html",
+    icon: '<span class="text-orange-400 font-bold text-xs">&lt;/&gt;</span>',
+  },
+  projects: {
+    label: "projects.js",
+    icon: '<span class="text-yellow-400 font-bold text-xs">JS</span>',
+  },
+  skills: {
+    label: "skills.json",
+    icon: '<span class="text-yellow-300 font-bold text-xs">{ }</span>',
+  },
+  experience: {
+    label: "experience.ts",
+    icon: '<span class="text-blue-500 font-bold text-xs">TS</span>',
+  },
+  contact: {
+    label: "contact.css",
+    icon: '<span class="text-sky-400 font-bold text-xs">#</span>',
+  },
+  readme: {
+    label: "README.md",
+    icon: '<span class="text-gray-400 font-bold text-xs">M↓</span>',
+  },
 };
 
 const fileLang = {
-  home:       'JSX',
-  about:      'HTML',
-  projects:   'JavaScript',
-  skills:     'JSON',
-  experience: 'TypeScript',
-  contact:    'CSS',
-  readme:     'Markdown',
+  home: "JSX",
+  about: "HTML",
+  projects: "JavaScript",
+  skills: "JSON",
+  experience: "TypeScript",
+  contact: "CSS",
+  readme: "Markdown",
 };
 
-let openTabs = ['home'];
-let activeFile = 'home';
+let openTabs = ["home"];
+let activeFile = "home";
 
-const tabsBar    = document.querySelector('[data-tab="home"]').parentElement;
-const editorArea = document.querySelector('.flex-1.overflow-y-auto.p-4');
+const tabsBar = document.querySelector('[data-tab="home"]').parentElement;
+const editorArea = document.querySelector(".flex-1.overflow-y-auto.p-4");
 
 // ── نمایش محتوا ──────────────────────────────────────────
 function showFile(fileName) {
-  Object.keys(filesMeta).forEach(file => {
+  Object.keys(filesMeta).forEach((file) => {
     const el = document.getElementById(`${file}-content`);
-    if (el) el.style.display = 'none';
+    if (el) el.style.display = "none";
   });
 
   const target = document.getElementById(`${fileName}-content`);
   if (target) {
-    target.style.display = 'block';
-    target.style.opacity = '0';
-    target.style.transition = 'opacity 0.15s ease';
+    target.style.display = "block";
+    target.style.opacity = "0";
+    target.style.transition = "opacity 0.15s ease";
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        target.style.opacity = '1';
+        target.style.opacity = "1";
       });
     });
   }
@@ -89,34 +110,36 @@ function showFile(fileName) {
   activeFile = fileName;
   renderTabs();
   highlightSidebar(fileName);
-  document.getElementById('status-language').textContent = fileLang[fileName] || '';
-  document.getElementById('breadcrumb-file').textContent = filesMeta[fileName].label;
+  document.getElementById("status-language").textContent =
+    fileLang[fileName] || "";
+  document.getElementById("breadcrumb-file").textContent =
+    filesMeta[fileName].label;
 }
 
 // ── رندر تب‌ها ───────────────────────────────────────────
 function renderTabs() {
-  tabsBar.innerHTML = '';
-  openTabs.forEach(file => {
-    const meta    = filesMeta[file];
+  tabsBar.innerHTML = "";
+  openTabs.forEach((file) => {
+    const meta = filesMeta[file];
     const isActive = file === activeFile;
-    const tab     = document.createElement('div');
+    const tab = document.createElement("div");
     tab.className = `relative flex items-center gap-2 px-4 h-full border-r border-[#1e1e1e] cursor-pointer text-xs shrink-0 transition-colors duration-150 ${
       isActive
-        ? 'bg-[#1e1e1e] text-white'
-        : 'bg-[#2d2d2d] text-gray-500 hover:bg-[#2a2d2e] hover:text-gray-300'
+        ? "bg-[#1e1e1e] text-white"
+        : "bg-[#2d2d2d] text-gray-500 hover:bg-[#2a2d2e] hover:text-gray-300"
     }`;
 
     // خط آبی بالای تب فعال
     if (isActive) {
-      const topLine = document.createElement('div');
-      topLine.className = 'absolute top-0 left-0 right-0 h-[2px] bg-[#007acc]';
+      const topLine = document.createElement("div");
+      topLine.className = "absolute top-0 left-0 right-0 h-[2px] bg-[#007acc]";
       tab.appendChild(topLine);
     }
 
     tab.innerHTML += `${meta.icon}<span>${meta.label}</span><button class="close-btn ml-2 text-gray-600 hover:text-white text-xs leading-none">✕</button>`;
 
-    tab.addEventListener('click', (e) => {
-      if (e.target.classList.contains('close-btn')) {
+    tab.addEventListener("click", (e) => {
+      if (e.target.classList.contains("close-btn")) {
         closeTab(file);
       } else {
         showFile(file);
@@ -129,13 +152,13 @@ function renderTabs() {
 
 // ── بستن تب ──────────────────────────────────────────────
 function closeTab(file) {
-  openTabs = openTabs.filter(f => f !== file);
+  openTabs = openTabs.filter((f) => f !== file);
   if (openTabs.length === 0) {
-    Object.keys(filesMeta).forEach(f => {
+    Object.keys(filesMeta).forEach((f) => {
       const el = document.getElementById(`${f}-content`);
-      if (el) el.style.display = 'none';
+      if (el) el.style.display = "none";
     });
-    tabsBar.innerHTML = '';
+    tabsBar.innerHTML = "";
     activeFile = null;
     highlightSidebar(null);
     return;
@@ -149,23 +172,26 @@ function closeTab(file) {
 
 // ── هایلایت سایدبار ──────────────────────────────────────
 function highlightSidebar(fileName) {
-  document.querySelectorAll('[data-file]').forEach(el => {
-    el.classList.toggle('bg-[#37373d]', el.getAttribute('data-file') === fileName);
+  document.querySelectorAll("[data-file]").forEach((el) => {
+    el.classList.toggle(
+      "bg-[#37373d]",
+      el.getAttribute("data-file") === fileName,
+    );
   });
 }
 
 // ── کلیک روی سایدبار ─────────────────────────────────────
-document.querySelectorAll('[data-file]').forEach(item => {
-  item.addEventListener('click', () => {
-    const file = item.getAttribute('data-file');
+document.querySelectorAll("[data-file]").forEach((item) => {
+  item.addEventListener("click", () => {
+    const file = item.getAttribute("data-file");
     if (!openTabs.includes(file)) openTabs.push(file);
     showFile(file);
   });
 });
 
 // ── ترمینال ───────────────────────────────────────────────
-const terminalInput  = document.getElementById('terminal-input');
-const terminalOutput = document.getElementById('terminal-output');
+const terminalInput = document.getElementById("terminal-input");
+const terminalOutput = document.getElementById("terminal-output");
 
 const commands = {
   help: () => `
@@ -180,25 +206,26 @@ const commands = {
       <div><span class="text-yellow-300">clear</span>      — Clear terminal</div>
     </div>`,
 
-  whoami: () => `<div class="text-gray-300">Hossein Shafiei — Frontend Developer & UI Designer<br><span class="text-gray-500">// ihosuix everywhere on the internet</span></div>`,
+  whoami: () =>
+    `<div class="text-gray-300">Hossein Shafiei — Frontend Developer & UI Designer<br><span class="text-gray-500">// ihosuix everywhere on the internet</span></div>`,
 
   about: () => {
-    showFile('about');
+    showFile("about");
     return `<div class="text-gray-300">Opening <span class="text-orange-300">about.html</span>...</div>`;
   },
 
   skills: () => {
-    showFile('skills');
+    showFile("skills");
     return `<div class="text-gray-300">Opening <span class="text-yellow-300">skills.json</span>...</div>`;
   },
 
   projects: () => {
-    showFile('projects');
+    showFile("projects");
     return `<div class="text-gray-300">Opening <span class="text-yellow-400">projects.js</span>...</div>`;
   },
 
   contact: () => {
-    showFile('contact');
+    showFile("contact");
     return `<div class="text-gray-300">Opening <span class="text-sky-300">contact.css</span>...</div>`;
   },
 
@@ -210,19 +237,19 @@ const commands = {
     </div>`,
 
   clear: () => {
-    terminalOutput.innerHTML = '';
+    terminalOutput.innerHTML = "";
     return null;
   },
 };
 
-terminalInput.addEventListener('keydown', (e) => {
-  if (e.key !== 'Enter') return;
+terminalInput.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") return;
   const cmd = terminalInput.value.trim().toLowerCase();
-  terminalInput.value = '';
+  terminalInput.value = "";
   if (!cmd) return;
 
-  const line = document.createElement('div');
-  line.className = 'mb-1';
+  const line = document.createElement("div");
+  line.className = "mb-1";
   line.innerHTML = `<span class="text-green-400">➜</span> <span class="text-[#4ec9b0]">portfolio</span> <span class="text-gray-500">$</span> <span class="text-white">${cmd}</span>`;
   terminalOutput.appendChild(line);
 
@@ -230,26 +257,27 @@ terminalInput.addEventListener('keydown', (e) => {
   if (handler) {
     const result = handler();
     if (result) {
-      const out = document.createElement('div');
-      out.className = 'mb-2 pl-2';
+      const out = document.createElement("div");
+      out.className = "mb-2 pl-2";
       out.innerHTML = result;
       terminalOutput.appendChild(out);
     }
   } else {
-    const out = document.createElement('div');
-    out.className = 'mb-2 pl-2 text-red-400';
+    const out = document.createElement("div");
+    out.className = "mb-2 pl-2 text-red-400";
     out.textContent = `Command not found: ${cmd}. Type 'help' for available commands.`;
     terminalOutput.appendChild(out);
   }
 
-  terminalOutput.parentElement.scrollTop = terminalOutput.parentElement.scrollHeight;
+  terminalOutput.parentElement.scrollTop =
+    terminalOutput.parentElement.scrollHeight;
 });
 
 // ── Typing Effect ─────────────────────────────────────────
 function typeText(elementId, text, speed = 30) {
   const el = document.getElementById(elementId);
   if (!el) return;
-  el.innerHTML = '';
+  el.innerHTML = "";
   let i = 0;
   const interval = setInterval(() => {
     if (i < text.length) {
@@ -257,46 +285,50 @@ function typeText(elementId, text, speed = 30) {
       i++;
     } else {
       clearInterval(interval);
-      el.innerHTML = 'Welcome to Hossein\'s terminal. Type <span class="text-[#4ec9b0]">help</span> to see available commands.';
+      el.innerHTML =
+        'Welcome to Hossein\'s terminal. Type <span class="text-[#4ec9b0]">help</span> to see available commands.';
     }
   }, speed);
 }
 
 // ── init ─────────────────────────────────────────────────
-showFile('home');
-typeText('terminal-welcome', 'Welcome to Hossein\'s terminal. Type \'help\' to see available commands.');
+showFile("home");
+typeText(
+  "terminal-welcome",
+  "Welcome to Hossein's terminal. Type 'help' to see available commands.",
+);
 
 // ── موبایل Sidebar Toggle ─────────────────────────────────
-const sidebar        = document.getElementById('sidebar');
-const sidebarToggle  = document.getElementById('sidebar-toggle');
-const sidebarOverlay = document.getElementById('sidebar-overlay');
+const sidebar = document.getElementById("sidebar");
+const sidebarToggle = document.getElementById("sidebar-toggle");
+const sidebarOverlay = document.getElementById("sidebar-overlay");
 
 function openSidebar() {
-  sidebar.classList.remove('-translate-x-full');
-  sidebarOverlay.classList.remove('hidden');
+  sidebar.classList.remove("-translate-x-full");
+  sidebarOverlay.classList.remove("hidden");
 }
 
 function closeSidebar() {
-  sidebar.classList.add('-translate-x-full');
-  sidebarOverlay.classList.add('hidden');
+  sidebar.classList.add("-translate-x-full");
+  sidebarOverlay.classList.add("hidden");
 }
 
-sidebarToggle.addEventListener('click', openSidebar);
-sidebarOverlay.addEventListener('click', closeSidebar);
+sidebarToggle.addEventListener("click", openSidebar);
+sidebarOverlay.addEventListener("click", closeSidebar);
 
 // بستن Sidebar بعد از انتخاب فایل روی موبایل
-document.querySelectorAll('[data-file]').forEach(item => {
-  item.addEventListener('click', () => {
+document.querySelectorAll("[data-file]").forEach((item) => {
+  item.addEventListener("click", () => {
     if (window.innerWidth < 768) closeSidebar();
   });
 });
 
 // cursor ترمینال
-const terminalCursor = document.getElementById('terminal-cursor');
-const terminalInputEl = document.getElementById('terminal-input');
+const terminalCursor = document.getElementById("terminal-cursor");
+const terminalInputEl = document.getElementById("terminal-input");
 
 // یه span مخفی برای اندازه‌گیری عرض متن
-const measurer = document.createElement('span');
+const measurer = document.createElement("span");
 measurer.style.cssText = `
   position: absolute;
   visibility: hidden;
@@ -306,86 +338,90 @@ measurer.style.cssText = `
 `;
 document.body.appendChild(measurer);
 
-terminalInputEl.addEventListener('input', () => {
+terminalInputEl.addEventListener("input", () => {
   measurer.textContent = terminalInputEl.value;
   const textWidth = measurer.getBoundingClientRect().width;
   terminalCursor.style.left = `${textWidth}px`;
 });
 
-terminalInputEl.addEventListener('focus', () => {
-  terminalCursor.style.display = 'inline-block';
+terminalInputEl.addEventListener("focus", () => {
+  terminalCursor.style.display = "inline-block";
 });
 
-terminalInputEl.addEventListener('blur', () => {
-  terminalCursor.style.display = 'none';
+terminalInputEl.addEventListener("blur", () => {
+  terminalCursor.style.display = "none";
 });
 
 // ── Search ───────────────────────────────────────────────
-const btnSearch     = document.getElementById('btn-search');
-const searchPanel   = document.getElementById('search-panel');
-const searchInput   = document.getElementById('search-input');
-const searchResults = document.getElementById('search-results');
-const fileList      = document.querySelector('ul.text-sm');
+const btnSearch = document.getElementById("btn-search");
+const searchPanel = document.getElementById("search-panel");
+const searchInput = document.getElementById("search-input");
+const searchResults = document.getElementById("search-results");
+const fileList = document.querySelector("ul.text-sm");
 
-btnSearch.addEventListener('click', () => {
-  const isOpen = !searchPanel.classList.contains('hidden');
+btnSearch.addEventListener("click", () => {
+  const isOpen = !searchPanel.classList.contains("hidden");
   if (isOpen) {
-    searchPanel.classList.add('hidden');
-    fileList.classList.remove('hidden');
+    searchPanel.classList.add("hidden");
+    fileList.classList.remove("hidden");
   } else {
-    searchPanel.classList.remove('hidden');
-    fileList.classList.add('hidden');
+    searchPanel.classList.remove("hidden");
+    fileList.classList.add("hidden");
     searchInput.focus();
-    renderSearchResults('');
+    renderSearchResults("");
   }
 });
 
 function renderSearchResults(query) {
-  searchResults.innerHTML = '';
+  searchResults.innerHTML = "";
   const files = Object.entries(filesMeta);
   const filtered = query
-    ? files.filter(([, meta]) => meta.label.toLowerCase().includes(query.toLowerCase()))
+    ? files.filter(([, meta]) =>
+        meta.label.toLowerCase().includes(query.toLowerCase()),
+      )
     : files;
 
   if (filtered.length === 0) {
-    searchResults.innerHTML = '<p class="text-gray-600 text-xs">No files found</p>';
+    searchResults.innerHTML =
+      '<p class="text-gray-600 text-xs">No files found</p>';
     return;
   }
 
   filtered.forEach(([key, meta]) => {
-    const item = document.createElement('div');
-    item.className = 'flex items-center gap-2 px-2 py-1.5 rounded cursor-pointer hover:bg-[#2a2d2e] text-xs text-gray-300';
+    const item = document.createElement("div");
+    item.className =
+      "flex items-center gap-2 px-2 py-1.5 rounded cursor-pointer hover:bg-[#2a2d2e] text-xs text-gray-300";
     item.innerHTML = `${meta.icon}<span>${meta.label}</span>`;
-    item.addEventListener('click', () => {
+    item.addEventListener("click", () => {
       if (!openTabs.includes(key)) openTabs.push(key);
       showFile(key);
-      searchPanel.classList.add('hidden');
-      fileList.classList.remove('hidden');
+      searchPanel.classList.add("hidden");
+      fileList.classList.remove("hidden");
     });
     searchResults.appendChild(item);
   });
 }
 
-searchInput.addEventListener('input', () => {
+searchInput.addEventListener("input", () => {
   renderSearchResults(searchInput.value);
 });
 
 // ── Code Rain ────────────────────────────────────────────
-const canvas = document.getElementById('code-rain');
+const canvas = document.getElementById("code-rain");
 if (canvas) {
-  const ctx = canvas.getContext('2d');
+  const ctx = canvas.getContext("2d");
   canvas.width = canvas.offsetWidth;
   canvas.height = canvas.offsetHeight;
 
-  const chars = '01アイウエオカキクケコabcdefghijklmnop{}[]<>/\\;:';
+  const chars = "01アイウエオカキクケコabcdefghijklmnop{}[]<>/\\;:";
   const fontSize = 12;
   const columns = Math.floor(canvas.width / fontSize);
   const drops = Array(columns).fill(1);
 
   function drawRain() {
-    ctx.fillStyle = 'rgba(30, 30, 30, 0.05)';
+    ctx.fillStyle = "rgba(30, 30, 30, 0.05)";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#007acc';
+    ctx.fillStyle = "#007acc";
     ctx.font = `${fontSize}px JetBrains Mono`;
     drops.forEach((y, i) => {
       const char = chars[Math.floor(Math.random() * chars.length)];
@@ -398,11 +434,11 @@ if (canvas) {
 }
 
 // ── Typing Title Effect ───────────────────────────────────
-const titles = ['Frontend Developer', 'UI Designer'];
+const titles = ["Frontend Developer", "UI Designer"];
 let titleIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
-const typingEl = document.getElementById('typing-title');
+const typingEl = document.getElementById("typing-title");
 
 function typeTitle() {
   if (!typingEl) return;
@@ -415,7 +451,7 @@ function typeTitle() {
     charIndex++;
   }
   if (!isDeleting && charIndex === current.length) {
-    setTimeout(() => isDeleting = true, 1500);
+    setTimeout(() => (isDeleting = true), 1500);
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     titleIndex = (titleIndex + 1) % titles.length;
@@ -425,9 +461,9 @@ function typeTitle() {
 typeTitle();
 
 // ── 3D Tilt Effect ────────────────────────────────────────
-const heroCard = document.getElementById('hero-card');
+const heroCard = document.getElementById("hero-card");
 if (heroCard) {
-  heroCard.addEventListener('mousemove', (e) => {
+  heroCard.addEventListener("mousemove", (e) => {
     const rect = heroCard.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -437,23 +473,24 @@ if (heroCard) {
     const rotateY = ((x - centerX) / centerX) * 6;
     heroCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
-  heroCard.addEventListener('mouseleave', () => {
-    heroCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+  heroCard.addEventListener("mouseleave", () => {
+    heroCard.style.transform =
+      "perspective(1000px) rotateX(0deg) rotateY(0deg)";
   });
 }
 
 // ── Ripple Effect ─────────────────────────────────────────
-document.querySelectorAll('.ripple').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    const ripple = document.createElement('span');
+document.querySelectorAll(".ripple").forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const ripple = document.createElement("span");
     const rect = btn.getBoundingClientRect();
     const size = Math.max(rect.width, rect.height);
     ripple.style.cssText = `
       position: absolute;
       width: ${size}px;
       height: ${size}px;
-      left: ${e.clientX - rect.left - size/2}px;
-      top: ${e.clientY - rect.top - size/2}px;
+      left: ${e.clientX - rect.left - size / 2}px;
+      top: ${e.clientY - rect.top - size / 2}px;
       background: rgba(255,255,255,0.2);
       border-radius: 50%;
       transform: scale(0);
@@ -466,12 +503,15 @@ document.querySelectorAll('.ripple').forEach(btn => {
 });
 
 // ── Glitch Effect روی عکس ────────────────────────────────
-const profileImg = document.getElementById('profile-img');
+const profileImg = document.getElementById("profile-img");
 if (profileImg) {
-  profileImg.addEventListener('mouseenter', () => {
-    profileImg.style.filter = 'hue-rotate(90deg) saturate(2)';
-    setTimeout(() => profileImg.style.filter = '', 150);
-    setTimeout(() => profileImg.style.filter = 'hue-rotate(-90deg) saturate(2)', 200);
-    setTimeout(() => profileImg.style.filter = '', 350);
+  profileImg.addEventListener("mouseenter", () => {
+    profileImg.style.filter = "hue-rotate(90deg) saturate(2)";
+    setTimeout(() => (profileImg.style.filter = ""), 150);
+    setTimeout(
+      () => (profileImg.style.filter = "hue-rotate(-90deg) saturate(2)"),
+      200,
+    );
+    setTimeout(() => (profileImg.style.filter = ""), 350);
   });
 }
